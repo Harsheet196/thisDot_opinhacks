@@ -48,6 +48,7 @@ class ReportProxy {
         )
         const receipt = await tx.wait();
         console.log(receipt);
+        return data.id
     }
 
     async getApplicationByID(id) {

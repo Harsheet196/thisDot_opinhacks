@@ -188,13 +188,33 @@ const create = async () => {
     console.log(description);
     console.log(location);
     console.log(fileLink);
+    let reportID = "";
     try {
-        await reportProxy.createApplication(subject, description, location, fileLink);
+        reportID = await reportProxy.createApplication(subject, description, location, fileLink);
         console.log("application created: ");
         document.getElementsByClassName("app-write")[0].style.display = "none"
     } catch (e) {
         console.log("error while creating report application");
         console.log(e);
+    }
+
+    // after creating report add status, remark, and warrant
+    let data = {
+        "reportID": reportID,
+        "status": "pending",
+        "remark": "none added",
+        "warrant": "false"
+    }
+    try {
+        let res = await postData(`${serverAddress}/addReport`, data)
+        if (res["success"] == "true") {
+            console.log("report added to mongo db");
+        } else {
+            console.log("failed to add report to mongo db");
+        }
+    } catch (e) {
+        console.log(e);
+        console.log("failed to add report to mongo db");
     }
 
     try {
@@ -305,6 +325,24 @@ const fillView = async (i) => {
     document.getElementById("view-upvote").innerText = yourApplications[i]["votes"]
     document.getElementById("desc-text").innerText = yourApplications[i]["description"]
     document.getElementById("location-value").innerText = yourApplications[i]["location"]
+
+    let data = {
+        "reportID": yourApplications[i]["id"]
+    }
+    try {
+        let res = await postData(`${serverAddress}/getReport`, data)
+        if ("success" in res) {
+            console.log("failed to access report");
+        } else {
+            console.log(res);
+            document.getElementById("report-status").innerText = res["status"]
+            document.getElementById("report-remark").innerText = res["remark"]
+            document.getElementById("report-warrant").innerText = res["warrant"]
+        }
+    } catch (e) {
+        console.log(e);
+        console.log("failed to access report");
+    }
 
 
     document.getElementById("file-out").href = yourApplications[i]["file"]
