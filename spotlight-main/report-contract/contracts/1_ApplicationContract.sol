@@ -62,7 +62,7 @@ contract ApplicationContract {
         // require(amount <= address(msg.sender).balance);
 
 
-        rewardBank[ applications[id].applierAddress ] += amount;
+        rewardBank[applications[id].applierAddress] += amount;
 
         Application memory a = applications[id];
         a.votes += 1;

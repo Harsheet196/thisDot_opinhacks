@@ -37,35 +37,35 @@ window.onload = async () => {
     //     document.getElementsByClassName("app-write")[0].style.display = "none"
     // }
 
-    // document.getElementById("view-close").onclick = () => {
-    //     document.getElementsByClassName("app-view")[0].style.display = "none"
-    //     currApp = -1
-    // }
+    document.getElementsByClassName("view-close")[0].onclick = () => {
+        document.getElementById("dialog-view").style.display = "none"
+        currApp = -1
+    }
 
-    // document.getElementById("up-vote").onclick = async () => {
-    //     console.log("in up-votes")
-    //     console.log(yourApplications[currApp]);
+    document.getElementById("upvote").onclick = async () => {
+        // console.log("in up-votes")
+        // console.log(yourApplications[currApp]);
 
-    //     if (reportProxy == null) return;
+        if (reportProxy == null) return;
 
-    //     startLoad()
+        startLoad()
 
-    //     try {
-    //         await reportProxy.voteReport(yourApplications[currApp]["id"])
-    //         console.log("Up-voted");
-    //     } catch (error) {
-    //         console.log("error in up voting");
-    //         console.log(error);
-    //     }
+        try {
+            await reportProxy.voteReport(yourApplications[currApp]["id"])
+            console.log("Up-voted");
+        } catch (error) {
+            console.log("error in up voting");
+            console.log(error);
+        }
 
-    //     try {
-    //         await getAllApplications()
-    //     } catch (error) {
-    //         console.log("error while updating main dashboard");
-    //     }
+        try {
+            await getAllApplications()
+        } catch (error) {
+            console.log("error while updating main dashboard");
+        }
 
-    //     endLoad()
-    // }
+        endLoad()
+    }
 
     // document.getElementById("create-app-nav").onclick = () => {
     //     document.getElementsByClassName("app-write")[0].style.display = "flex"
@@ -124,7 +124,7 @@ const getAllApplications = async () => {
         data["description"] = temp[2];
         data["file"] = temp[3];
         data["applierAddress"] = temp[4];
-        data["votes"] = temp[5];
+        data["votes"] = temp[7];
         yourApplications.push(data)
     }
     buildCards(yourApplications)
@@ -164,7 +164,8 @@ const create = async () => {
 const getYourApplication = async () => {
     if (reportProxy == null) return;
     let res = await reportProxy.getApplicationByAddress()
-    console.log(res);
+    // console.log(res);
+
     yourApplications = []
     for (let i = 0; i < res.length; ++i) {
         // console.log(res[i]);
@@ -177,7 +178,7 @@ const getYourApplication = async () => {
         data["description"] = temp[2];
         data["file"] = temp[3];
         data["applierAddress"] = temp[4];
-        data["votes"] = temp[5];
+        data["votes"] = temp[7];
         yourApplications.push(data)
     }
     buildCards(yourApplications)
@@ -225,6 +226,9 @@ const buildCards = (data) => {
                             </span>
                         </div>
                         <div class="votes">
+                        <div class="upvote-value">
+                        ${data[i]["votes"]}
+                            </div>
                             <span class="material-symbols-outlined">
                                 arrow_upward_alt
                             </span>
@@ -237,11 +241,11 @@ const buildCards = (data) => {
 }
 
 const attachEvent = (yourApplications) => {
-    let apps = document.getElementsByClassName("application")
-    for (let i = 0; i < apps.length; ++i) {
-        apps[i].addEventListener("click", () => {
-            document.getElementsByClassName("app-view")[0].style.display = "flex"
 
+    let apps = document.getElementsByClassName("card")
+    for (let i = 0; i < apps.length; ++i) {
+        document.getElementsByClassName("view-more")[i].addEventListener("click", () => {
+            document.getElementById("dialog-view").style.display = "flex"
             fillView(i)
             currApp = i;
         })
@@ -251,8 +255,8 @@ const attachEvent = (yourApplications) => {
 const fillView = async (i) => {
 
     document.getElementById("subject-out").innerText = yourApplications[i]["subject"]
-    document.getElementById("name-out").innerText = yourApplications[i]["votes"]
-    document.getElementById("description-out").innerText = yourApplications[i]["description"]
+    document.getElementById("view-upvote").innerText = yourApplications[i]["votes"]
+    document.getElementById("desc-text").innerText = yourApplications[i]["description"]
 
 
     document.getElementById("file-out").href = yourApplications[i]["file"]

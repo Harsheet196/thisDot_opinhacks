@@ -202,6 +202,7 @@ body {
         font-weight: bold;
         margin-bottom: 6px;
         font-size: large;
+        text-transform: capitalize;
     }
 
     .card-description {
@@ -259,11 +260,11 @@ body {
     /* background-color: var(--card-accent-green); */
     border-radius: 0px 0 8px 0;
     clip-path: polygon(29% 0, 100% 0, 100% 100%, 0 100%);
-    cursor: pointer;
+    cursor: not-allowed;
 }
 
 .votes:hover {
-    background-color: #abb7de;
+    // background-color: #abb7de;
 }
 
 .votes span {
@@ -289,7 +290,7 @@ body {
 .box-container {
     display: flex;
     flex-direction: column;
-    height: 66vh;
+    height: auto;
     width: 50vw;
     background-color: white;
     border-radius: 10px;
@@ -391,4 +392,8 @@ body {
 
 #upvote:hover {
     background-color: #40ca22;
+}
+
+#dialog-view {
+    display: none;
 }

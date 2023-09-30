@@ -79,28 +79,46 @@
                             deployed_code
                         </span>REPORT<i class="bi bi-4-square"></i></button>
                 </div>
-                <!-- <div class="dialog-box-wrapper">
-                    <div class="box-container">
-                        <div class="top-flex">
-                            <div class="title-line">Lorem Ipsum</div>
-                            <div class="views">
-                                <span class="material-symbols-outlined">
-                                    visibility
-                                </span>0</div>
-                        </div>
-
-                        <div class="description-line">
-                            <p id="desc">Description</p>
-                            <p id="desc-text">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Proin sagittis nisl rhoncus mattis rhoncus urna. Eu ultrices vitae auctor eu augue ut lectus. Adipiscing tristique risus nec feugiat in fermentum posuere urna. Enim neque volutpat ac tincidunt. Elementum sagittis vitae et leo duis ut. Ullamcorper sit amet risus nullam eget. Nec ullamcorper sit amet risus nullam. Blandit cursus risus at ultrices. Gravida neque convallis a cras semper auctor neque vitae. Pharetra convallis posuere morbi leo urna molestie. Vel fringilla est ullamcorper eget nulla facilisi. Lacus viverra vitae congue eu consequat ac. Eget dolor morbi non arcu. Morbi tristique senectus et netus et malesuada fames. Mus mauris vitae ultricies leo integer malesuada. Netus et malesuada fames ac turpis egestas integer. Tempor orci dapibus ultrices in iaculis nunc. Aliquam sem et tortor consequat id porta nibh venenatis cras.                            </p></div>
-                        <div class="attached-file">File<span>View</span></div>
-                        <div class="end-btns">
-                            <button id="close" onclick="showDialogBox()">Close</button>
-                            <button id="upvote">Upvote</button>
-                            
+            </div>
+            <div class="dialog-box-wrapper" id="dialog-view">
+                <div class="box-container">
+                    <div class="top-flex">
+                        <div class="title-line" id="subject-out">Lorem Ipsum</div>
+                        <div class="views">
+                            <div id="view-upvote">0</div> <span class="material-symbols-outlined">
+                                arrow_upward_alt
+                            </span>
                         </div>
                     </div>
-                </div> -->
+
+                    <div class="description-line">
+                        <p id="desc">Description</p>
+                        <p id="desc-text">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                            incididunt ut labore et dolore magna aliqua. Proin sagittis nisl rhoncus mattis rhoncus
+                            urna. Eu ultrices vitae auctor eu augue ut lectus. Adipiscing tristique risus nec
+                            feugiat in fermentum posuere urna. Enim neque volutpat ac tincidunt. Elementum sagittis
+                            vitae et leo duis ut. Ullamcorper sit amet risus nullam eget. Nec ullamcorper sit amet
+                            risus nullam. Blandit cursus risus at ultrices. Gravida neque convallis a cras semper
+                            auctor neque vitae. Pharetra convallis posuere morbi leo urna molestie. Vel fringilla
+                            est ullamcorper eget nulla facilisi. Lacus viverra vitae congue eu consequat ac. Eget
+                            dolor morbi non arcu. Morbi tristique senectus et netus et malesuada fames. Mus mauris
+                            vitae ultricies leo integer malesuada. Netus et malesuada fames ac turpis egestas
+                            integer. Tempor orci dapibus ultrices in iaculis nunc. Aliquam sem et tortor consequat
+                            id porta nibh venenatis cras. </p>
+                    </div>
+                    <div class="attached-file">
+                        File
+                        <a href="" target="_blank" id="file-out">
+                            <span>View</span>
+                        </a>
+                    </div>
+                    <div class="end-btns">
+                        <button id="close" class="view-close">Close</button>
+                        <button id="upvote">Upvote</button>
+
+                    </div>
+                </div>
             </div>
             <div class="card-grid">
                 <div class="card">
@@ -126,6 +144,9 @@
                             </span>
                         </div>
                         <div class="votes">
+                            <div class="upvote-value">
+                                0
+                            </div>
                             <span class="material-symbols-outlined">
                                 arrow_upward_alt
                             </span>
