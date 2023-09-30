@@ -31,11 +31,15 @@ window.onload = async () => {
     //     endLoad()
     // }
 
-    // document.getElementById("create").addEventListener("click", create);
+    document.getElementById("create").addEventListener("click", create);
 
-    // document.getElementById("close").onclick = () => {
-    //     document.getElementsByClassName("app-write")[0].style.display = "none"
-    // }
+    document.getElementsByClassName("writeclose")[0].onclick = () => {
+        document.getElementsByClassName("app-write")[0].style.display = "none"
+    }
+
+    document.getElementById("create-btn").onclick = () => {
+        document.getElementsByClassName("app-write")[0].style.display = "flex"
+    }
 
     document.getElementsByClassName("view-close")[0].onclick = () => {
         document.getElementById("dialog-view").style.display = "none"
@@ -67,9 +71,6 @@ window.onload = async () => {
         endLoad()
     }
 
-    // document.getElementById("create-app-nav").onclick = () => {
-    //     document.getElementsByClassName("app-write")[0].style.display = "flex"
-    // }
 
     let blocks = document.getElementsByClassName("block")
     for (let i = 0; i < blocks.length; ++i) {
@@ -159,6 +160,7 @@ const create = async () => {
     }
 
     endLoad()
+    document.getElementsByClassName("app-write")[0].style.display = "none"
 }
 
 const getYourApplication = async () => {
@@ -207,7 +209,7 @@ const buildCards = (data) => {
     let txt = ""
     for (let i = 0; i < data.length; ++i) {
 
-        txt = `
+        txt += `
         <div class="card">
 
                     <div class="card-details">

@@ -75,11 +75,42 @@
                         </span>Rewards</button>
                 </div>
                 <div>
-                    <button class="post-btn"><span class="material-symbols-outlined">
+                    <button class="post-btn" id="create-btn"><span class="material-symbols-outlined">
                             deployed_code
                         </span>REPORT<i class="bi bi-4-square"></i></button>
                 </div>
             </div>
+
+            <div class="app-write dialog-box-wrapper">
+                <div>
+                    <h1>Create new Report</h1>
+
+                    <label>Subject:</label>
+                    <input type=" text" id="subject-input" autocomplete="on" placeholder="Subject of application"><br>
+
+                    <label>Description</label>
+                    <div type="text" id="description-input" autocomplete="on" placeholder="Description"
+                        contentEditable="true">
+                        Description
+                    </div>
+                    <label>Status:</label>
+                    <input type="text" id="status-input" autocomplete="on" placeholder="Status" contentEditable="true">
+                    <label>Location:</label>
+                    <input type="text" id="location-input" autocomplete="on" placeholder="Location"
+                        contentEditable="true">
+
+                    <br>
+
+                    <label>Upload application file</label>
+                    <input type="file" name="fileList" id="filepicker">
+
+                    <div class="end-btns">
+                        <button id="close" class="writeclose">Close</button>
+                        <button id="create">Create</button>
+                    </div>
+                </div>
+            </div>
+
             <div class="dialog-box-wrapper" id="dialog-view">
                 <div class="box-container">
                     <div class="top-flex">
@@ -116,7 +147,6 @@
                     <div class="end-btns">
                         <button id="close" class="view-close">Close</button>
                         <button id="upvote">Upvote</button>
-
                     </div>
                 </div>
             </div>
