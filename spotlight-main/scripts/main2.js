@@ -15,6 +15,13 @@ window.onload = async () => {
 
     await connect();
 
+    document.getElementById("location-filter").oninput = () => {
+        searchFunc()
+    }
+    document.getElementById("keyword").oninput = () => {
+        searchFunc()
+    }
+
     document.getElementById("submit-aadhar").onclick = () => {
         document.getElementById("aadhar-bg").style.display = "none"
         document.getElementsByClassName("aadhar-write")[0].style.display = "none"
@@ -322,4 +329,38 @@ const withdrawMoney = async () => {
     }
 
     endLoad()
+}
+
+const searchFunc = () => {
+    let pincode = document.getElementById("location-filter").value
+    let keyword = document.getElementById("keyword").value
+    let cards = document.getElementsByClassName("card")
+
+    if (pincode.length == 0 && keyword.length == 0) {
+        for (let i = 0; i < cards.length; ++i) {
+            cards[i].style.display = "flex"
+        }
+        return
+    }
+    if (pincode.length != 0) {
+        pincode = pincode.toLowerCase()
+        for (let i = 0; i < cards.length; ++i) {
+            if (yourApplications[i]["location"].includes(pincode.toLowerCase()) == false) {
+                cards[i].style.display = "none"
+            } else if (yourApplications[i]["description"].toLowerCase().includes(keyword)) {
+                cards[i].style.display = "flex"
+            }
+        }
+    }
+
+    if (keyword.length != 0) {
+        keyword = keyword.toLowerCase()
+        for (let i = 0; i < cards.length; ++i) {
+            if (yourApplications[i]["description"].toLowerCase().includes(keyword) == false) {
+                cards[i].style.display = "none"
+            } else if (yourApplications[i]["location"].includes(pincode.toLowerCase())) {
+                cards[i].style.display = "flex"
+            }
+        }
+    }
 }
