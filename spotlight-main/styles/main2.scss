@@ -362,6 +362,7 @@ body {
 }
 
 #upvote,
+#withdraw-btn,
 #close,
 #write-close,
 #create {
@@ -375,7 +376,8 @@ body {
 }
 
 #upvote,
-#create {
+#create,
+#withdraw-btn {
     background-color: #33b017;
     border: none;
     color: white;

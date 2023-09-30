@@ -25,11 +25,11 @@ window.onload = async () => {
         endLoad()
     }
 
-    // document.getElementById("showProfile").onclick = async () => {
-    //     startLoad()
-    //     await getProfileInfo();
-    //     endLoad()
-    // }
+    document.getElementById("showProfile").onclick = async () => {
+        startLoad()
+        await getProfileInfo();
+        endLoad()
+    }
 
     document.getElementById("create").addEventListener("click", create);
 
@@ -268,12 +268,13 @@ const getProfileInfo = async () => {
     if (reportProxy == null) return;
     let balance = await reportProxy.getBalance()
 
-    let appContainer = document.getElementsByClassName("applications")[0]
+    let appContainer = document.getElementsByClassName("card-grid")[0]
     appContainer.innerHTML = `
         <div class="application reward">
             <div class="subject">
             Your Reward Bank
             </div>
+            <br>
 
             <div class="name">
             
@@ -285,7 +286,10 @@ const getProfileInfo = async () => {
             Balance: ${balance}
             </div>
 
-            <button id="withdraw-btn">Withdraw</button>
+            <br>
+            <div class="end-btns">
+                <button id="withdraw-btn">Withdraw</button>
+            </div>
         </div>
     `
     document.getElementById("withdraw-btn").onclick = () => {
