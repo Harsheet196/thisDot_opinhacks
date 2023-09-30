@@ -27,7 +27,7 @@ class ReportProxy {
         return this.account = { address, balance }
     }
 
-    async createApplication(subject, description, status, location, fileLink) {
+    async createApplication(subject, description, location, fileLink) {
         if (!this.isConnected) {
             console.log("Connect Your Account to Continue!")
             return []
@@ -36,7 +36,6 @@ class ReportProxy {
             id: uuid(),
             subject,
             description,
-            status,
             location,
             fileLink
         }
@@ -44,7 +43,6 @@ class ReportProxy {
             data.id,
             data.subject,
             data.description,
-            data.status,
             data.location,
             data.fileLink
         )
@@ -97,8 +95,8 @@ class ReportProxy {
             return []
         }
         const tx = await this.contract.functions.getBalance()
-            // const receipt = await tx.wait();
-            // console.log(receipt);
+        // const receipt = await tx.wait();
+        // console.log(receipt);
         return tx[0]
     }
 

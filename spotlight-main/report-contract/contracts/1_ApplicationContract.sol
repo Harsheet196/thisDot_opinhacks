@@ -7,7 +7,6 @@ contract ApplicationContract {
         string subject;
         string description;
         string file;
-        string status;
         string location;
         address applierAddress;
         uint256 votes;
@@ -22,7 +21,6 @@ contract ApplicationContract {
         string memory id,
         string memory subject,
         string memory description,
-        string memory status,
         string memory location,
         string memory file
     ) public {
@@ -30,8 +28,7 @@ contract ApplicationContract {
         a.id = id;
         a.subject = subject;
         a.description = description;
-        a.status=status;
-        a.location=location;
+        a.location = location;
         a.applierAddress = msg.sender;
         a.file = file;
         a.votes = 0;

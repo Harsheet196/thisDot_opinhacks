@@ -4,7 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Manifest.json  -->
+    <meta property="og:title" content="Spotlight">
+    <meta property="og:description"
+        content="A community driven and Blockchain powered crime reporting system for citizen empowerment.">
+    <meta property="og:image" itemprop="image" content="./assests/logo.png">
+    <meta property="og:url" content="">
 
+    <!-- Main Link Tags  -->
+    <link href="./assests/logo.png" rel="icon" type="image/png" sizes="16x16">
+    <link href="./assests/logo.png" rel="icon" type="image/png" sizes="32x32">
     <!-- fonts -->
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
@@ -93,10 +102,9 @@
                         contentEditable="true">
                         Description
                     </div>
-                    <label>Status:</label>
-                    <input type="text" id="status-input" autocomplete="on" placeholder="Status" contentEditable="true">
+
                     <label>Location:</label>
-                    <input type="text" id="location-input" autocomplete="on" placeholder="Location"
+                    <input type="text" id="location-input" autocomplete="on" placeholder="Enter your pincode"
                         contentEditable="true">
 
                     <br>
@@ -114,7 +122,7 @@
             <div class="dialog-box-wrapper" id="dialog-view">
                 <div class="box-container">
                     <div class="top-flex">
-                        <div class="title-line" id="subject-out">Lorem Ipsum</div>
+                        <div class="title-line" id="subject-out">Title Here</div>
                         <div class="views">
                             <div id="view-upvote">0</div> <span class="material-symbols-outlined">
                                 arrow_upward_alt
@@ -125,18 +133,14 @@
                     <div class="description-line">
                         <p id="desc">Description</p>
                         <p id="desc-text">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                            incididunt ut labore et dolore magna aliqua. Proin sagittis nisl rhoncus mattis rhoncus
-                            urna. Eu ultrices vitae auctor eu augue ut lectus. Adipiscing tristique risus nec
-                            feugiat in fermentum posuere urna. Enim neque volutpat ac tincidunt. Elementum sagittis
-                            vitae et leo duis ut. Ullamcorper sit amet risus nullam eget. Nec ullamcorper sit amet
-                            risus nullam. Blandit cursus risus at ultrices. Gravida neque convallis a cras semper
-                            auctor neque vitae. Pharetra convallis posuere morbi leo urna molestie. Vel fringilla
-                            est ullamcorper eget nulla facilisi. Lacus viverra vitae congue eu consequat ac. Eget
-                            dolor morbi non arcu. Morbi tristique senectus et netus et malesuada fames. Mus mauris
-                            vitae ultricies leo integer malesuada. Netus et malesuada fames ac turpis egestas
-                            integer. Tempor orci dapibus ultrices in iaculis nunc. Aliquam sem et tortor consequat
-                            id porta nibh venenatis cras. </p>
+                            Here comes description </p>
+                    </div>
+
+                    <div class="location-line">
+                        <p id="location-label">Location:</p>
+                        <p id="location-value">
+
+                        </p>
                     </div>
                     <div class="attached-file">
                         File
@@ -155,15 +159,10 @@
 
                     <div class="card-details">
                         <div class="card-title">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias, exercitationem.
+                            Title is here
                         </div>
                         <div class="card-description">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam id labore vero placeat
-                            sapiente,
-                            quia nam obcaecati, incidunt nostrum aliquam similique et enim distinctio corrupti aliquid
-                            tempora, sit totam laudantium quibusdam dolor! Corporis unde pariatur molestiae modi!
-                            Labore,
-                            sunt commodi.
+                            Description is here
                         </div>
                     </div>
 

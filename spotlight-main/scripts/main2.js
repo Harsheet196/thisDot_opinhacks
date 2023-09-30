@@ -117,15 +117,16 @@ const getAllApplications = async () => {
     for (let i = 0; i < res.length; ++i) {
         // console.log(res[i]);
         let temp = await reportProxy.getApplicationByID(res[i]);
-        // console.log(temp);
+        console.log(temp);
 
         let data = {}
         data["id"] = temp[0];
         data["subject"] = temp[1];
         data["description"] = temp[2];
         data["file"] = temp[3];
-        data["applierAddress"] = temp[4];
-        data["votes"] = temp[7];
+        data["location"] = temp[4];
+        data["applierAddress"] = temp[5];
+        data["votes"] = temp[6];
         yourApplications.push(data)
     }
     buildCards(yourApplications)
@@ -137,15 +138,15 @@ const create = async () => {
     startLoad()
     let subject = document.getElementById("subject-input").value;
     let description = document.getElementById("description-input").innerText;
-    let status = document.getElementById("status-input").innerText;
-    let location = document.getElementById("location-input").innerText;
+    let location = document.getElementById("location-input").value;
     let fileLink = await getFileLink();
 
     console.log(subject);
     console.log(description);
+    console.log(location);
     console.log(fileLink);
     try {
-        await reportProxy.createApplication(subject, description, status, location, fileLink);
+        await reportProxy.createApplication(subject, description, location, fileLink);
         console.log("application created: ");
         document.getElementsByClassName("app-write")[0].style.display = "none"
     } catch (e) {
@@ -179,8 +180,9 @@ const getYourApplication = async () => {
         data["subject"] = temp[1];
         data["description"] = temp[2];
         data["file"] = temp[3];
-        data["applierAddress"] = temp[4];
-        data["votes"] = temp[7];
+        data["location"] = temp[4];
+        data["applierAddress"] = temp[5];
+        data["votes"] = temp[6];
         yourApplications.push(data)
     }
     buildCards(yourApplications)
@@ -259,6 +261,7 @@ const fillView = async (i) => {
     document.getElementById("subject-out").innerText = yourApplications[i]["subject"]
     document.getElementById("view-upvote").innerText = yourApplications[i]["votes"]
     document.getElementById("desc-text").innerText = yourApplications[i]["description"]
+    document.getElementById("location-value").innerText = yourApplications[i]["location"]
 
 
     document.getElementById("file-out").href = yourApplications[i]["file"]
