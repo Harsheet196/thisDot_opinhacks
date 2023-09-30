@@ -403,7 +403,8 @@ body {
     display: none;
 }
 
-.app-write {
+.app-write,
+.aadhar-write {
     position: fixed;
     margin: auto;
     top: 0;
@@ -486,4 +487,19 @@ body {
 
         margin-right: 20px;
     }
+}
+
+#aadhar-bg {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    background: rgba(255, 255, 255, 0.4);
+    top: 0;
+    left: 0;
+    filter: blur(2px);
+}
+
+.aadhar-write {
+    display: flex;
+    height: 40vh;
 }

@@ -15,6 +15,11 @@ window.onload = async () => {
 
     await connect();
 
+    document.getElementById("submit-aadhar").onclick = () => {
+        document.getElementById("aadhar-bg").style.display = "none"
+        document.getElementsByClassName("aadhar-write")[0].style.display = "none"
+    }
+
     document.getElementById("showAll").onclick = async () => {
         await getAllApplications();
     }
