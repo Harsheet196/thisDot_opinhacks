@@ -76,6 +76,7 @@ window.onload = async () => {
 
         try {
             await getAllApplications()
+            await fillView(currApp)
         } catch (error) {
             console.log("error while updating main dashboard");
         }
