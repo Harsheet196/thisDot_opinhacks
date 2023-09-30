@@ -2,6 +2,7 @@ const { MongoClient } = require("mongodb");
 const dotenv = require('dotenv').config();
 
 const uri = process.env.URL;
+// console.log(uri);
 let client;
 
 try {

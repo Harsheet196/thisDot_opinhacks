@@ -9,11 +9,44 @@ let reportProxy = null
 let yourApplications = [];
 let currApp = -1
 
+// let serverAddress = "http://localhost:8000"
+let serverAddress = "https://spotlight-authority.web.app"
 window.onload = async () => {
 
     reportProxy = new ReportProxy()
 
     await connect();
+
+    // check if aadhar is working
+    let userAcc = await reportProxy.getAccount()
+    let doesAadharExist = await postData(`${serverAddress}/doesAadharExist`, {
+        "userAddress": userAcc.address,
+        "aadhar": document.getElementById("aadhar-input").value
+    })
+    console.log(doesAadharExist);
+
+    if (doesAadharExist["value"] == "true") {
+        document.getElementById("aadhar-bg").style.display = "none"
+        document.getElementsByClassName("aadhar-write")[0].style.display = "none"
+    }
+
+    document.getElementById("submit-aadhar").onclick = async () => {
+
+        let data = {
+            "userAddress": userAcc.address,
+            "aadhar": document.getElementById("aadhar-input").value
+        }
+        try {
+            let res = await postData(`${serverAddress}/addAadhar`, data)
+            // console.log(res);
+
+            document.getElementById("aadhar-bg").style.display = "none"
+            document.getElementsByClassName("aadhar-write")[0].style.display = "none"
+            console.log("Aadhar mapped successfully");
+        } catch (e) {
+            console.log("Error while adding aadhar data");
+        }
+    }
 
     document.getElementById("location-filter").oninput = () => {
         searchFunc()
@@ -22,10 +55,7 @@ window.onload = async () => {
         searchFunc()
     }
 
-    document.getElementById("submit-aadhar").onclick = () => {
-        document.getElementById("aadhar-bg").style.display = "none"
-        document.getElementsByClassName("aadhar-write")[0].style.display = "none"
-    }
+
 
     document.getElementById("showAll").onclick = async () => {
         await getAllApplications();
