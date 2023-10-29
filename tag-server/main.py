@@ -24,7 +24,7 @@ def extract_keywords_api():
 
     res = []
     for i in keywords:
-        if i[1] > 0.5:
+        if i[1] > 0.3:
             res.append(i[0])
     response = {
         'keywords': res

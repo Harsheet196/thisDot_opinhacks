@@ -196,20 +196,6 @@ const fillView = async (i) => {
    document.getElementById("location-value").innerText =
       yourApplications[i]["location"];
 
-   let tags = await postData("http://127.0.0.1:8001/keywords", {
-      text: yourApplications[i]["description"],
-   });
-   tags = tags["keywords"];
-
-   let spamLevel = await query({ inputs: yourApplications[i]["description"] });
-   spamLevel = spamLevel[0][1]["score"];
-   spamLevel = Math.round(spamLevel * 100);
-
-   document.getElementById("desc-text").innerText += `
-    Tags: ${tags}
-    Spam Level: ${spamLevel}%
-    `;
-
    let data = {
       reportID: yourApplications[i]["id"],
    };
@@ -222,6 +208,12 @@ const fillView = async (i) => {
          document.getElementById("report-status").value = res["status"];
          document.getElementById("report-remark").value = res["remark"];
          document.getElementById("report-warrant").value = res["warrant"];
+
+         let tags = res["tags"];
+         let spamLevel = res["spamLevel"];
+         document.getElementById("desc-text").innerText += `
+         Tags: ${tags}
+         Spam Level: ${spamLevel}% `;
       }
    } catch (e) {
       console.log(e);
