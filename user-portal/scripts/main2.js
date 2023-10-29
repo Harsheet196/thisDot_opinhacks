@@ -205,8 +205,12 @@ const create = async () => {
    tags = tags["keywords"];
 
    let spamLevel = await query({ inputs: description });
-   spamLevel = spamLevel[0][1]["score"];
-   spamLevel = Math.round(spamLevel * 100);
+   let spamRes = [];
+   if (spamLevel.length != 0) {
+      spamLevel = spamLevel[0][1]["score"];
+      spamLevel = Math.round(spamLevel * 100);
+      spamRes = spamLevel;
+   }
 
    // after creating report add status, remark, and warrant
    let data = {
@@ -215,7 +219,7 @@ const create = async () => {
       remark: "none added",
       warrant: "false",
       tags,
-      spamLevel,
+      spamLevel: spamRes,
    };
    try {
       let res = await postData(`${serverAddress}/addReport`, data);
