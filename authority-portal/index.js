@@ -4,19 +4,19 @@ const DB = require("./myDB");
 var cors = require("cors");
 
 // parser
-app.use(express.static("../public"));
+app.use(express.static("./public"));
 app.use(express.json());
 app.use(cors());
 
 // custom modules
-const { checkAuth, hasRole } = require("./middleware/auth");
+const { checkAuth } = require("./middleware/auth");
 
 app.get("/", checkAuth, (request, response) => {
-   response.sendFile(__dirname + "../public/login.html");
+   response.sendFile(__dirname + `/public/index.html`);
 });
 
 app.get("/dashboard", checkAuth, async (req, res) => {
-   res.sendFile(`index.html`, { root: "./public" });
+   res.sendFile(`dashboard.html`, { root: "./public" });
 });
 
 app.get("*", (req, res) => {
@@ -82,8 +82,7 @@ app.post("/addReport", async (req, res) => {
 
 // listen for requests :)
 // port infos
-// const port = process.env.PORT || 8000;
-// app.listen(port, () => console.log(`Example app listening at http://localhost:${port}`))
-
-const functions = require("firebase-functions");
-exports.app = functions.https.onRequest(app);
+const port = process.env.PORT || 8000;
+app.listen(port, () =>
+   console.log(`Example app listening at http://localhost:${port}`)
+);

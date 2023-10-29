@@ -4,6 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <!-- Meta data  -->
     <!-- Manifest.json  -->
     <meta property="og:title" content="Spotlight">
     <meta property="og:description"
@@ -14,175 +17,105 @@
     <!-- Main Link Tags  -->
     <link href="./assests/logo.png" rel="icon" type="image/png" sizes="16x16">
     <link href="./assests/logo.png" rel="icon" type="image/png" sizes="32x32">
-    <!-- fonts -->
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 
-    <!-- styles -->
-    <link rel="stylesheet" href="./styles/main2.min.css">
+    <title>Spotlight | Authority login </title>
+
+    <!-- izitoast -->
+    <link rel="stylesheet" href="./styles/iziToast.min.css">
+    <script src="./scripts/iziToast.min.js" defer></script>
+
+    <!-- css -->
+    <link rel="stylesheet" href="./styles/login.min.css">
 
     <!-- scripts -->
-    <!-- ethers.js -->
-    <script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js" type="application/javascript" async></script>
-
-    <!-- custom scripts -->
-    <script src="./scripts/loader.js" defer></script>
-    <script src="./scripts/fetch-code.js" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/uuid-random@1.3.2/index.min.js" defer></script>
-    <script src="./scripts/reportConfig.js" defer></script>
-    <script src="./scripts/reportProxy.js" defer></script>
-    <script src="./scripts/main2.js" type="module"></script>
-
-    <title>Spotlight | Authority Dashboard</title>
+    <script src="./scripts/firebase-login.js" type="module"></script>
 </head>
 
 <body>
-
-    <!-- loader start -->
-    <div class="loader-wrapper">
-        <div>
-            <div class="bg"></div>
-            <div class="container">
-                <div class="holder">
-                    <div class="box"></div>
-                </div>
-                <div class="holder">
-                    <div class="box"></div>
-                </div>
-                <div class="holder">
-                    <div class="box"></div>
-                </div>
-            </div>
+    <!-- loader -->
+    <div class="loader-container">
+        <div class="mov">
+            Spotlight
         </div>
-        <p>loading...</p>
-    </div>
-    <!-- loader end -->
-
-    <div class="wrapper">
-        <div class="nav">
-            <div class="logo">
-                thisDot
-            </div>
-        </div>
-
-        <div class="hero">
-            <div id="top-line">Crime Reporting System</div>
-            <div id="mid-line">Authority Portal</div>
-            <div id="bottom-line">Enhancing traditional crime reporting into decentralized platform</div>
-        </div>
-
-        <div class="search-holder">
-            <div class="search-container">
-                <input type="text" id="location-filter" placeholder="Enter pincode">
-                <input type="text" id="keyword" placeholder="Enter keyword to search">
-                <button>🔍</button>
-            </div>
-        </div>
-
-        <div class="main-container">
-            <div class="container-nav">
-                <div>
-                    <button class="nav-active block" id="showAll"><span class="material-symbols-outlined">
-                            report
-                        </span>All reports </button>
-                    <!-- <button class="nav-btn block" id="showYour"><span class="material-symbols-outlined">
-                            description
-                        </span>Reported by you</button>
-                    <button class="nav-btn block" id="showProfile"><span class="material-symbols-outlined">
-                            hotel_class
-                        </span>Rewards</button> -->
-                </div>
-                <div>
-                    <!-- <button class="post-btn" id="create-btn"><span class="material-symbols-outlined">
-                            deployed_code
-                        </span>REPORT<i class="bi bi-4-square"></i></button> -->
-                </div>
-            </div>
-
-            <div class="dialog-box-wrapper" id="dialog-view">
-                <div class="box-container">
-                    <div class="top-flex">
-                        <div class="title-line" id="subject-out">Title Here</div>
-                        <div class="views">
-                            <div id="view-upvote">0</div> <span class="material-symbols-outlined">
-                                arrow_upward_alt
-                            </span>
-                        </div>
-                    </div>
-
-                    <div class="description-line">
-                        <p id="desc">Description</p>
-                        <p id="desc-text">
-                            Here comes description </p>
-                    </div>
-
-                    <div>
-                        Status:
-                        <br>
-                        <input type="text" id="report-status">
-                    </div>
-                    <div>
-                        Remark:
-                        <br>
-                        <input type="text" id="report-remark">
-                    </div>
-                    <div>
-                        Warrant:
-                        <br>
-                        <input type="text" id="report-warrant">
-                    </div>
-
-                    <div class="location-line">
-                        <p id="location-label">Location:</p>
-                        <p id="location-value">
-
-                        </p>
-                    </div>
-                    <div class="attached-file">
-                        File
-                        <a href="" target="_blank" id="file-out">
-                            <span>View</span>
-                        </a>
-                    </div>
-                    <div class="end-btns">
-                        <button id="close" class="view-close">Close</button>
-                        <button id="submit-review">Update review</button>
-                    </div>
-                </div>
-            </div>
-            <div class="card-grid">
-                <div class="card">
-
-                    <div class="card-details">
-                        <div class="card-title">
-                            Title is here
-                        </div>
-                        <div class="card-description">
-                            Description is here
-                        </div>
-                    </div>
-
-                    <div class="card-bottom">
-                        <div class="view-more">
-                            View <span class="material-symbols-outlined">
-                                east
-                            </span>
-                        </div>
-                        <div class="votes">
-                            <div class="upvote-value">
-                                0
-                            </div>
-                            <span class="material-symbols-outlined">
-                                arrow_upward_alt
-                            </span>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
+        <div class="loader">
+            Spot<b>Light</b>
         </div>
     </div>
 
+    <div class="holder">
+        <div class="form-holder">
+            <div class="app-name">Spot<b>Light</b></div>
+            <form action="javascript:void(0)">
+
+                <div class="header login-inp">Sign in</div>
+                <div class="header signup-inp">Create Account</div>
+                <div class="header reset-inp">Reset Password</div>
+                <!-- <div class="header admin-inp">Admin Dashboard</div> -->
+
+                <label for="email" class="login-inp reset-inp signup-inp admin-inp">Email Address</label>
+                <input type="email" required id="email" name="email" class="login-inp reset-inp signup-inp admin-inp">
+
+                <br>
+
+                <label for="password" class="login-inp signup-inp admin-inp">Password</label>
+                <input type="password" required id="password" name="password" class="login-inp signup-inp admin-inp">
+                <span class="login-inp" id="pass-span">Forgot password ? <a href="/?type=reset">reset password</a>
+                </span>
+                <br>
+
+                <label for="confirm-password" class="signup-inp">Confirm Password</label>
+                <input type="password" id="confirm-password" name="confirm-password" class="signup-inp">
+
+                <br>
+
+                <button type="submit" id="submit-sign-up" class="signup-inp">
+                    sign up
+                    <div class="btn-loader"></div>
+                </button>
+
+                <span class="signup-inp">Already have an account ? <a href="/?type=login">login</a> </span>
+
+                <button type="submit" id="submit-login" class="login-inp">
+                    log in
+                    <div class="btn-loader"></div>
+                </button>
+
+                <span class="login-inp">Don't have an account ? <a href="/?type=signup">create one</a> </span>
+
+                <button type="submit" id="submit-logout">
+                    log out
+                    <div class="btn-loader"></div>
+                </button>
+
+                <span class="reset-inp">Enter your Email Address to receive password reset link</span>
+                <button type="submit" id="submit-reset-password" class="reset-inp">
+                    Get Email
+                    <div class="btn-loader"></div>
+                </button>
+
+                <button type="submit" class="admin-inp" id="submit-admin-inp">
+                    Admin Log-in
+                    <div class="btn-loader"></div>
+                </button>
+            </form>
+
+            <div id="footer"> <a href="?type=admin">Admin Login</a> <a href="?type=login"
+                    class="signup-inp reset-inp admin-inp">User login</a></div>
+        </div>
+        <div class="image-holder">
+            <img src="./assests/images/bg.jpg" alt="" srcset="">
+            <div id="tagline">
+                <span>
+                    Powered by
+                </span>
+                <br>
+                <br>
+                <span>
+                    Blockchain
+                </span>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>

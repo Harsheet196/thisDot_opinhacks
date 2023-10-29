@@ -95,7 +95,7 @@ window.onload = () => {
                let val = url.searchParams.get("type");
                if (val == "signup") {
                   iziToast.success({ title: "Redirect", message: "to game" });
-                  window.location = "/game";
+                  window.location = "/dashboard";
                   return;
                }
                if (val == "admin") {
@@ -103,7 +103,7 @@ window.onload = () => {
                      title: "Redirect",
                      message: "to dashboard",
                   });
-                  window.location = "/admin";
+                  window.location = "/dashboard";
                   return;
                }
                hideLoader();
@@ -164,7 +164,7 @@ const signUpUser = async () => {
 
       successMsg("signed up");
       successMsg("redirecting to game");
-      window.location = "/game";
+      window.location = "/dashboard";
 
       console.log("user signed up");
       console.log(user);
@@ -197,7 +197,7 @@ const loginUser = async () => {
       document.cookie = `idToken=${idToken}`;
 
       successMsg("logged in");
-      window.location = "/game";
+      window.location = "/dashboard";
 
       console.log("user logged in");
    } catch (e) {
