@@ -1,0 +1,255 @@
+ @import "./fonts";
+
+ * {
+     margin: 0;
+     padding: 0;
+     box-sizing: border-box;
+ }
+
+ body {
+     width: 100vw;
+     height: 100vh;
+     background: #e1e1e1;
+     margin: 0;
+     padding: 0;
+     display: flex;
+     flex-direction: row;
+     justify-content: center;
+     align-items: center;
+     font-family: 'Poppins', sans-serif;
+     transition-duration: 300ms;
+ }
+
+ .holder {
+     background: #fff;
+     width: 90%;
+     height: 86%;
+     min-height: 560px;
+     display: flex;
+
+     flex-direction: row;
+     justify-content: space-between;
+     align-items: center;
+     margin: auto;
+     border-radius: 6px;
+
+     @media screen and (max-width: $mobile) {
+         justify-content: center;
+     }
+
+     .form-holder {
+         width: 50%;
+         height: 100%;
+         display: flex;
+         flex-direction: column;
+         justify-content: space-between;
+         align-items: center;
+         padding: 30px;
+
+         @media screen and (max-width: $mobile) {
+             width: 100%;
+             padding: 22px;
+         }
+
+         .app-name {
+             font-family: 'Cormorant Garamond', serif;
+             color: $brown-dark;
+             font-size: x-large;
+             margin-top: -10px;
+             margin-bottom: 30px;
+         }
+
+         span {
+             padding: 2px 8px;
+             margin: 6px;
+         }
+     }
+
+     form {
+         display: flex;
+         flex-direction: column;
+         justify-content: center;
+         align-items: flex-start;
+         color: $brown-dark;
+         width: 96%;
+         max-width: 350px;
+         height: 80%;
+
+
+         //  background: cyan;
+
+         label {
+             color: #000;
+             font: large;
+             width: 100%;
+
+             &::after {
+                 content: ' *';
+                 color: $brown-dark;
+             }
+
+             @media screen and (max-width: $mobile) {
+                 font-size: medium;
+             }
+         }
+
+         .header {
+             width: 100%;
+             text-align: center;
+             margin-bottom: 20px;
+             font-size: x-large;
+         }
+
+
+         input {
+             margin-bottom: 4px;
+             outline: none;
+             background-color: $brown-light;
+             border: none;
+             width: 100%;
+             font-size: medium;
+             padding: 10px;
+             background: none;
+             border: 1px solid #ddd;
+             border-radius: 4px;
+             margin-top: 8px;
+             margin-bottom: 20px;
+             background-color: $brown-light;
+         }
+
+         button {
+             border: none;
+             outline: none;
+             background: $brown-dark;
+             color: #fff;
+             border-radius: 8px;
+             width: 100%;
+             padding: 16px 0;
+             margin: 10px 0;
+             font-size: large;
+             cursor: pointer;
+
+             display: flex;
+             flex-direction: row;
+             justify-content: center;
+             align-items: center;
+
+             text-transform: capitalize;
+
+             &:hover {
+                 transform: scale(.95);
+             }
+
+             &:active {
+                 transform: scale(.9);
+             }
+
+             a {
+                 text-decoration: none;
+                 font-family: inherit;
+                 color: #fff;
+             }
+         }
+     }
+
+     .image-holder {
+         height: 100%;
+         width: 50%;
+         background: #fff;
+         overflow: hidden;
+
+         display: flex;
+         flex-direction: row;
+         justify-content: center;
+         align-items: center;
+
+         @media screen and (max-width: $mobile) {
+             display: none;
+             width: 0%;
+         }
+
+
+         #tagline {
+             position: absolute;
+             color: #fff;
+             font-size: xx-large;
+
+             span {
+                 width: 100%;
+                 background: #262626;
+                 padding: 10px 50px;
+             }
+
+             @media screen and (max-width: $tab) {
+                 font-size: x-large;
+             }
+         }
+
+         img {
+             display: inline-block;
+             width: 100%;
+
+             @media screen and (max-width: $tab) {
+                 height: 100%;
+                 width: auto;
+             }
+
+         }
+     }
+ }
+
+ .signup-inp,
+ #submit-logout,
+ .reset-inp,
+ .admin-inp {
+     display: none;
+ }
+
+ .login-inp {
+     display: block;
+ }
+
+ #pass-span {
+     margin-top: -6px;
+     margin-bottom: 10px;
+     margin-left: -1px;
+ }
+
+ a {
+     color: #262626;
+ }
+
+ #footer {
+     width: 100%;
+     text-align: center;
+     display: flex;
+     flex-direction: row;
+     justify-content: space-evenly;
+     align-items: center;
+
+     a {
+         margin-right: 10px;
+     }
+ }
+
+ .btn-loader {
+     position: absolute;
+     width: 32px;
+     height: 32px;
+     border-radius: 50%;
+     border-top: 2px solid #fff;
+     animation: rot .8s infinite;
+
+     display: none;
+
+ }
+
+ @keyframes rot {
+     0% {
+         transform: rotate(0turn);
+     }
+
+     100% {
+         transform: rotate(1turn);
+     }
+ }
