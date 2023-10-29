@@ -171,6 +171,21 @@ const attachEvent = (yourApplications) => {
    }
 };
 
+async function query(data) {
+   const response = await fetch(
+      "https://api-inference.huggingface.co/models/mrm8488/bert-tiny-finetuned-sms-spam-detection",
+      {
+         headers: {
+            Authorization: "Bearer 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",
+         },
+         method: "POST",
+         body: JSON.stringify(data),
+      }
+   );
+   const result = await response.json();
+   return result;
+}
+
 const fillView = async (i) => {
    document.getElementById("subject-out").innerText =
       yourApplications[i]["subject"];
@@ -186,9 +201,14 @@ const fillView = async (i) => {
    });
    tags = tags["keywords"];
 
+   let spamLevel = await query({ inputs: yourApplications[i]["description"] });
+   spamLevel = spamLevel[0][1]["score"];
+   spamLevel = Math.round(spamLevel * 100);
+
    document.getElementById("desc-text").innerText += `
-      Tags: ${tags}
-      `;
+    Tags: ${tags}
+    Spam Level: ${spamLevel}%
+    `;
 
    let data = {
       reportID: yourApplications[i]["id"],
