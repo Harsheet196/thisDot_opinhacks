@@ -8,7 +8,7 @@ app.config['CORS_HEADERS']='Content-Type'
 
 def extract_keywords(text):
     keybert = KeyBERT()
-    keywords = keybert.extract_keywords(text)
+    keywords = keybert.extract_keywords(text,stop_words=None)
     return keywords
 
 @cross_origin()
